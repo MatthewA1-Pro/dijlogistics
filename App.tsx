@@ -396,10 +396,10 @@ const App: React.FC = () => {
                 <span className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em]">BODEGAS PROPIAS: MIAMI & CHINA</span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-[84px] font-black text-white leading-[1.1] tracking-tighter mb-8 italic">
-                Tu Carga <span className="text-[#EB5E28]">Global</span>,<br />
-                Simple & Segura.
+                Tu Carga <span className="text-white">Global</span>,<br />
+                <span className="text-[#EB5E28]">Simple & Segura.</span>
               </h1>
-              <p className="text-lg lg:text-2xl text-white/70 mb-12 max-w-2xl font-medium leading-relaxed">
+              <p className="text-lg lg:text-xl text-white/90 mb-12 max-w-2xl font-normal leading-relaxed">
                 Activa tu casillero corporativo GRATIS hoy. Importamos tecnología, maquinaria y retail a Panamá y Venezuela con tarifas fijas garantizadas.
               </p>
               <div className="flex flex-wrap gap-6">
