@@ -46,27 +46,34 @@ const LogoIcon = ({ size = 40, className = "" }) => (
 
 const LogoDIJ = ({ inverted = false }) => (
   <div className="flex items-center gap-3 group cursor-pointer">
-    <div className={`w-14 h-14 shrink-0 ${inverted ? 'text-white' : 'text-slate-800'}`}>
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <circle cx="100" cy="90" r="55" stroke="currentColor" strokeWidth="2" opacity="0.9" />
-        <ellipse cx="100" cy="90" rx="22" ry="55" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
-        <ellipse cx="100" cy="90" rx="55" ry="22" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
-        <line x1="100" y1="35" x2="100" y2="145" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
-        <line x1="45" y1="90" x2="155" y2="90" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
-        <path d="M45 140C55 145 80 150 110 135L155 105" stroke="#EB5E28" strokeWidth="6" strokeLinecap="round" />
-        <g transform="translate(130, 100) rotate(-25)">
-          <path d="M0 0L35 12L28 18L0 12L-15 35L-22 30L-10 12L-35 8L-35 0Z" fill="#EB5E28" stroke={inverted ? 'white' : '#EB5E28'} strokeWidth="1.2" strokeLinejoin="round" />
-          <circle cx="15" cy="8" r="1.5" fill="white" />
+    <div className="w-16 h-16 shrink-0 relative">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-sm">
+        {/* Globe Background */}
+        <circle cx="100" cy="100" r="70" fill={inverted ? "#ffffff20" : "#f8fafc"} />
+        <circle cx="100" cy="100" r="70" stroke="#4A90E2" strokeWidth="2" />
+        <ellipse cx="100" cy="100" rx="30" ry="70" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
+        <ellipse cx="100" cy="100" rx="70" ry="30" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
+        <line x1="30" y1="100" x2="170" y2="100" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
+        <line x1="100" y1="30" x2="100" y2="170" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
+
+        {/* Plane Trail */}
+        <path d="M20 140C40 145 80 150 130 110C160 85 180 60 185 55" stroke="#EB5E28" strokeWidth="8" strokeLinecap="round" className="opacity-90" />
+        <path d="M20 140C40 145 80 150 130 110C160 85 180 60 185 55" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+
+        {/* Plane */}
+        <g transform="translate(150, 85) rotate(-25)">
+          <path d="M0 0L45 15L35 22L0 15L-20 45L-30 40L-15 15L-45 10L-45 0Z" fill="#EB5E28" stroke="white" strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="20" cy="10" r="1.5" fill="white" opacity="0.8" />
         </g>
       </svg>
     </div>
-    <div className="flex flex-col">
-      <div className={`flex items-baseline leading-none ${inverted ? 'text-white' : 'text-slate-900'}`}>
-        <span className="text-2xl font-black">DIJ</span>
-        <span className="text-2xl font-light tracking-tight">LOGISTICS</span>
+    <div className="flex flex-col -ml-1">
+      <div className="flex items-baseline leading-none">
+        <span className={`text-2xl font-black tracking-tighter ${inverted ? 'text-white' : 'text-[#1B363F]'}`}>DIJ</span>
+        <span className="text-2xl font-bold tracking-tighter text-[#EB5E28]">LOGISTICS</span>
       </div>
-      <span className={`text-[8px] font-bold uppercase tracking-[0.3em] mt-1 ${inverted ? 'text-white/70' : 'text-slate-500'}`}>
-        Tu carga en tiempo record
+      <span className={`text-[7px] font-bold uppercase tracking-[0.35em] mt-1.5 ${inverted ? 'text-white/80' : 'text-[#64748B]'}`}>
+        TU CARGA EN TIEMPO RECORD
       </span>
     </div>
   </div>
@@ -74,12 +81,9 @@ const LogoDIJ = ({ inverted = false }) => (
 
 const PartnerCarousel = () => (
   <section id="partners" className="py-20 bg-white border-y border-slate-100 overflow-hidden relative">
-    <div className="max-w-[1400px] mx-auto px-6 mb-12 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-      <div>
-        <span className="text-orange-600 text-[10px] font-black uppercase tracking-[0.4em] mb-3 block">Nuestra Red de Confianza</span>
-        <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Proveedores y Aliados Globales</h2>
-      </div>
-      <p className="text-slate-400 text-sm font-medium max-w-md">Integramos tu logística con los marketplaces y distribuidores más grandes del mundo para una experiencia de importación sin fricciones.</p>
+    <div className="max-w-[1400px] mx-auto px-6 mb-12 text-center">
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Mayoristas y marketplaces tecnológicos con los que trabajamos</h2>
+      <div className="w-20 h-1 bg-orange-500 mx-auto mt-6 rounded-full opacity-30" />
     </div>
 
     <div className="relative w-full flex overflow-hidden group">
@@ -235,11 +239,11 @@ const CalculatorSection = () => {
       <div className="flex-1 p-10 lg:p-16 bg-slate-50/40">
         <div className="flex items-center gap-4 mb-10">
           <div className="p-3 bg-orange-100 text-orange-600 rounded-2xl"><Calculator size={28} /></div>
-          <h3 className="text-2xl font-black text-slate-900">Calcula tu Envío</h3>
+          <h3 className="text-2xl font-bold text-slate-900">Calcula tu Envío</h3>
         </div>
         <div className="space-y-8">
           <div>
-            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-3 block">Ruta & Servicio</label>
+            <label className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3 block">Ruta & Servicio</label>
             <select value={idx} onChange={e => setIdx(Number(e.target.value))} className="w-full p-5 bg-white border border-slate-200 rounded-2xl font-bold text-slate-700 focus:border-orange-500 transition-all outline-none shadow-sm">
               {allRoutes.map((r, i) => <option key={i} value={i}>{r.origin} ➔ {r.destination} ({r.type})</option>)}
             </select>
@@ -247,45 +251,45 @@ const CalculatorSection = () => {
           <div className="grid grid-cols-3 gap-4">
             {['l', 'w', 'h'].map((d, i) => (
               <div key={d}>
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-3 block">{['Largo', 'Ancho', 'Alto'][i]} (in)</label>
+                <label className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3 block">{['Largo', 'Ancho', 'Alto'][i]} (in)</label>
                 <input type="number" placeholder="0" value={dims[d as keyof typeof dims]} onChange={e => setDims({ ...dims, [d]: e.target.value })} className="w-full p-5 bg-white border border-slate-200 rounded-2xl font-bold focus:border-orange-500 transition-all outline-none" />
               </div>
             ))}
           </div>
           <div>
-            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-3 block">Peso Real (Libras)</label>
+            <label className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-3 block">Peso Real (Libras)</label>
             <input type="number" placeholder="Ej: 5.5" value={dims.we} onChange={e => setDims({ ...dims, we: e.target.value })} className="w-full p-5 bg-white border border-slate-200 rounded-2xl font-bold focus:border-orange-500 transition-all outline-none" />
           </div>
         </div>
       </div>
       <div className="w-full lg:w-[420px] p-10 lg:p-16 bg-white border-l border-slate-100 flex flex-col justify-between">
         <div>
-          <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-10">Total Estimado</h4>
+          <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-10">Total Estimado</h4>
           {calculation ? (
             <div className="space-y-8">
               <div className="bg-slate-900 p-10 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
                 <div className="absolute -right-4 -top-4 w-24 h-24 bg-orange-500/20 rounded-full blur-2xl group-hover:bg-orange-500/30 transition-all"></div>
                 <p className="text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Flete Proyectado</p>
-                <p className="text-6xl font-black">${calculation.total}<span className="text-sm font-medium opacity-50 ml-1">USD</span></p>
+                <p className="text-6xl font-bold">${calculation.total}<span className="text-sm font-medium opacity-50 ml-1">USD</span></p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                  <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Peso Vol.</p>
+                  <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Peso Vol.</p>
                   <p className="text-lg font-bold text-slate-900">{calculation.volWeight} lb</p>
                 </div>
                 <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                  <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Volumen</p>
+                  <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Volumen</p>
                   <p className="text-lg font-bold text-slate-900">{calculation.cubicFeet} ft³</p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="text-slate-400 text-sm italic border-2 border-dashed border-slate-100 p-8 rounded-[2rem] text-center">
+            <div className="text-slate-400 text-sm border-2 border-dashed border-slate-100 p-8 rounded-[2rem] text-center">
               Ingresa las dimensiones para ver tu tarifa especial.
             </div>
           )}
         </div>
-        <a href={WHATSAPP_LINK} target="_blank" className="mt-12 bg-orange-500 text-white py-6 rounded-2xl font-black text-xs uppercase tracking-widest text-center shadow-xl shadow-orange-500/20 hover:bg-slate-900 transition-all flex items-center justify-center gap-3">
+        <a href={WHATSAPP_LINK} target="_blank" className="mt-12 bg-orange-500 text-white py-6 rounded-2xl font-bold text-xs uppercase tracking-widest text-center shadow-xl shadow-orange-500/20 hover:bg-slate-900 transition-all flex items-center justify-center gap-3">
           Cerrar Trato vía WhatsApp <ArrowRight size={18} />
         </a>
       </div>
@@ -299,14 +303,14 @@ const FAQSection = () => {
     <section id="faq" className="py-32 bg-slate-50">
       <div className="max-w-[1000px] mx-auto px-6">
         <div className="text-center mb-20">
-          <span className="text-orange-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Centro de Ayuda</span>
-          <h2 className="text-4xl font-black text-slate-900 tracking-tighter italic">Preguntas Frecuentes</h2>
+          <span className="text-orange-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Centro de Ayuda</span>
+          <h2 className="text-4xl font-bold text-slate-900 tracking-tighter">Preguntas Frecuentes</h2>
         </div>
         <div className="space-y-4">
           {FAQ_DATA.map((faq, i) => (
             <div key={i} className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <button onClick={() => setActive(active === i ? null : i)} className="w-full flex items-center justify-between p-8 text-left group">
-                <span className="text-lg font-black text-slate-800 pr-8 group-hover:text-orange-500 transition-colors">{faq.q}</span>
+                <span className="text-lg font-bold text-slate-800 pr-8 group-hover:text-orange-500 transition-colors">{faq.q}</span>
                 <ChevronDown className={`text-slate-300 transition-transform duration-500 ${active === i ? 'rotate-180 text-orange-500' : ''}`} size={24} />
               </button>
               <AnimatePresence>
@@ -346,24 +350,24 @@ const App: React.FC = () => {
       <LeadAIAssistant />
 
       {/* Dynamic Header */}
-      <header className={`fixed w-full z-[150] transition-all duration-500 ${scrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'}`}>
-        <nav className="max-w-[1400px] mx-auto px-8 py-5 flex justify-between items-center">
+      <header className={`fixed w-full z-[150] transition-all duration-500 ${scrolled ? 'bg-white border-b border-slate-100 py-3 shadow-md' : 'bg-transparent py-6'}`}>
+        <nav className="max-w-[1400px] mx-auto px-8 flex justify-between items-center">
           <button onClick={() => navTo('home')}>
-            <LogoDIJ inverted />
+            <LogoDIJ inverted={!scrolled} />
           </button>
 
           <div className="hidden lg:flex gap-10 items-center">
             {['Servicios', 'Pasos', 'Tarifas', 'Calculadora'].map(item => (
-              <button key={item} onClick={() => navTo(item.toLowerCase())} className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-orange-500 transition-all text-white/80">
+              <button key={item} onClick={() => navTo(item.toLowerCase())} className={`text-[11px] font-bold uppercase tracking-[0.2em] hover:text-[#EB5E28] transition-all ${scrolled ? 'text-slate-600' : 'text-white'}`}>
                 {item}
               </button>
             ))}
-            <a href={WHATSAPP_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg hover:bg-orange-600 transition-all transform hover:scale-105">
+            <a href={WHATSAPP_LINK} target="_blank" className="bg-[#EB5E28] text-white px-8 py-3.5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg hover:bg-orange-600 transition-all">
               WHATSAPP DIRECTO
             </a>
           </div>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className={`lg:hidden p-3 rounded-2xl ${menuOpen ? 'text-white bg-white/10' : 'text-white bg-white/10'}`}>
+          <button onClick={() => setMenuOpen(!menuOpen)} className={`lg:hidden p-3 rounded-2xl ${scrolled ? 'text-slate-900' : 'text-white'}`}>
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
@@ -372,10 +376,10 @@ const App: React.FC = () => {
           {menuOpen && (
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="lg:hidden bg-white border-b border-slate-100 overflow-hidden">
               <div className="flex flex-col p-10 gap-6 text-center">
-                {['Servicios', 'Pasos', 'Tarifas', 'FAQ'].map(item => (
-                  <button key={item} onClick={() => navTo(item.toLowerCase())} className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">{item}</button>
+                {['Servicios', 'Pasos', 'Tarifas', 'Calculadora'].map(item => (
+                  <button key={item} onClick={() => navTo(item.toLowerCase())} className="text-2xl font-bold text-slate-900 uppercase tracking-tighter">{item}</button>
                 ))}
-                <a href={WHATSAPP_LINK} className="bg-orange-500 text-white py-6 rounded-3xl font-black text-xs uppercase tracking-widest mt-4">Abrir Casillero</a>
+                <a href={WHATSAPP_LINK} className="bg-orange-500 text-white py-6 rounded-3xl font-bold text-xs uppercase tracking-widest mt-4">WhatsApp Directo</a>
               </div>
             </motion.div>
           )}
@@ -384,27 +388,27 @@ const App: React.FC = () => {
 
       <main>
         {/* Hero */}
-        <section id="home" className="relative h-screen flex items-center bg-slate-700 overflow-hidden">
+        <section id="home" className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-60" alt="Global Logistics" />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-800/60 via-slate-700/40 to-slate-800/50" />
+            <div className="absolute inset-0 bg-slate-900/60" />
           </div>
           <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-44 lg:pt-32">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl text-left">
-              <div className="inline-flex items-center gap-3 bg-transparent border border-orange-500/40 px-6 py-3 rounded-full mb-10">
-                <Package className="text-orange-500" size={16} />
-                <span className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em]">BODEGAS PROPIAS: MIAMI & CHINA</span>
+              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/20 px-6 py-3 rounded-full mb-10">
+                <Package className="text-[#EB5E28]" size={16} />
+                <span className="text-white text-[11px] font-bold uppercase tracking-[0.2em]">BODEGAS PROPIAS: MIAMI & CHINA</span>
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-[84px] font-black text-white leading-[1.1] tracking-tighter mb-8 italic">
-                Tu Carga <span className="text-white">Global</span>,<br />
+              <h1 className="text-[60px] md:text-[80px] lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-10">
+                Tu Carga Global,<br />
                 <span className="text-[#EB5E28]">Simple & Segura.</span>
               </h1>
-              <p className="text-lg lg:text-xl text-white/90 mb-12 max-w-2xl font-normal leading-relaxed">
+              <p className="text-lg lg:text-xl text-white/80 mb-12 max-w-2xl font-medium leading-relaxed">
                 Activa tu casillero corporativo GRATIS hoy. Importamos tecnología, maquinaria y retail a Panamá y Venezuela con tarifas fijas garantizadas.
               </p>
               <div className="flex flex-wrap gap-6">
-                <a href={WHATSAPP_LINK} className="bg-[#EB5E28] text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-[#EB5E28]/20 hover:scale-105 transition-all transform active:scale-95">ABRIR CASILLERO GRATIS</a>
-                <button onClick={() => navTo('tarifas')} className="bg-transparent border-2 border-white/30 text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all">VER TARIFAS Y RUTAS</button>
+                <a href={WHATSAPP_LINK} className="bg-[#EB5E28] text-white px-10 py-5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform active:scale-95">ABRIR CASILLERO GRATIS</a>
+                <button onClick={() => navTo('tarifas')} className="bg-transparent border border-white/30 text-white px-10 py-5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all">VER TARIFAS Y RUTAS</button>
               </div>
             </motion.div>
           </div>
@@ -415,31 +419,22 @@ const App: React.FC = () => {
         {/* Steps */}
         <section id="pasos" className="py-32 bg-white overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-8">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
-              <div className="max-w-2xl">
-                <span className="text-orange-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Flujo de Trabajo</span>
-                <h2 className="text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter">De la tienda a tus manos.</h2>
-              </div>
-              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-center gap-6">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />)}
-                </div>
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">+5,000 Clientes Satisfechos</p>
-              </div>
+            <div className="text-center mb-24">
+              <span className="text-[#EB5E28] text-[12px] font-bold uppercase tracking-[0.4em] mb-4 block">Logística Simplificada</span>
+              <h2 className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter italic">¿Cómo Funciona?</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-12">
               {[
-                { icon: UserPlus, t: "Obtén tu ID Único", d: "Regístrate y recibe instantáneamente tus direcciones físicas de recepción en Miami y China." },
-                { icon: ShoppingBag, t: "Compra Globalmente", d: "Usa tu nueva dirección al comprar en Amazon, eBay, Alibaba o cualquier tienda del mundo." },
-                { icon: Package, t: "Recibe en Tiempo Récord", d: "Nos encargamos de la aduana y logística interna. Tú solo esperas tu paquete en casa." }
+                { icon: UserPlus, t: "1. Regístrate Gratis", d: "Abre tu casillero vía chat o WhatsApp. Te asignamos direcciones en Miami y China sin mensualidades." },
+                { icon: ShoppingBag, t: "2. Realiza tus Compras", d: "Envía tus paquetes de Amazon, Alibaba o eBay a nuestras bodegas estratégicas en Miami (Tax-Free)." },
+                { icon: Package, t: "3. Recibe en Casa", d: "Gestionamos aduanas y transporte internacional hasta tu puerta en Panamá o Venezuela sin complicaciones." }
               ].map((s, i) => (
-                <div key={i} className="group p-12 bg-slate-50 rounded-[3rem] border border-transparent hover:bg-white hover:border-slate-100 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-12 text-6xl font-black opacity-[0.03] text-slate-900 group-hover:opacity-[0.05] transition-opacity">0{i + 1}</div>
-                  <div className="mb-10 w-20 h-20 bg-white rounded-3xl shadow-sm flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
-                    <s.icon size={32} />
+                <div key={i} className="group text-center">
+                  <div className="mb-8 w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto text-[#EB5E28] shadow-sm">
+                    <s.icon size={28} />
                   </div>
-                  <h3 className="text-2xl font-black text-slate-900 mb-6 tracking-tight">{s.t}</h3>
-                  <p className="text-slate-500 font-medium leading-relaxed">{s.d}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">{s.t}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{s.d}</p>
                 </div>
               ))}
             </div>
@@ -450,8 +445,8 @@ const App: React.FC = () => {
         <section className="py-32 bg-slate-50">
           <div className="max-w-[1400px] mx-auto px-8">
             <div className="text-center mb-24">
-              <span className="text-orange-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Transparencia de Costos</span>
-              <h2 className="text-5xl font-black text-slate-900 tracking-tighter">Tarifas 2025 Actualizadas</h2>
+              <span className="text-orange-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Transparencia de Costos</span>
+              <h2 className="text-5xl font-bold text-slate-900 tracking-tighter">Tarifas 2025 Actualizadas</h2>
             </div>
             <CalculatorSection />
           </div>
@@ -470,7 +465,7 @@ const App: React.FC = () => {
                 ].map((f, i) => (
                   <div key={i} className="space-y-4">
                     <div className="text-orange-600"><f.icon size={32} /></div>
-                    <h4 className="text-xl font-black text-slate-900">{f.t}</h4>
+                    <h4 className="text-xl font-bold text-slate-900">{f.t}</h4>
                     <p className="text-slate-500 text-sm font-medium">{f.d}</p>
                   </div>
                 ))}
@@ -478,9 +473,9 @@ const App: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-orange-500/5 rounded-[4rem] blur-3xl"></div>
                 <div className="relative bg-slate-900 p-16 rounded-[4rem] text-white">
-                  <h3 className="text-4xl font-black mb-8 italic tracking-tighter">¿Listo para importar sin límites?</h3>
+                  <h3 className="text-4xl font-bold mb-8 tracking-tighter">¿Listo para importar sin límites?</h3>
                   <p className="text-slate-400 text-lg mb-12 font-medium">Únete a la logística del futuro. Registro rápido y atención personalizada vía WhatsApp.</p>
-                  <a href={WHATSAPP_LINK} className="inline-flex items-center gap-4 bg-orange-500 px-10 py-6 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all">
+                  <a href={WHATSAPP_LINK} className="inline-flex items-center gap-4 bg-orange-500 px-10 py-6 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all">
                     Abrir mi Casillero Ahora <ArrowRight size={18} />
                   </a>
                 </div>
@@ -497,7 +492,7 @@ const App: React.FC = () => {
         <div className="max-w-[1400px] mx-auto px-8">
           <div className="grid lg:grid-cols-4 gap-20 border-b border-white/5 pb-24">
             <div className="lg:col-span-2 space-y-12">
-              <LogoDIJ inverted />
+              <LogoDIJ inverted={false} />
               <p className="text-slate-500 text-xl font-medium max-w-sm leading-relaxed">
                 Revolucionando la logística internacional con centros de operación en Panamá, Miami y China.
               </p>
@@ -510,29 +505,29 @@ const App: React.FC = () => {
               </div>
             </div>
             <div className="space-y-10">
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-orange-500">Direcciones HUB</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-orange-500">Direcciones HUB</h4>
               <ul className="space-y-8">
                 <li className="flex gap-4">
                   <MapPin className="text-orange-500 shrink-0" size={24} />
                   <div className="space-y-1">
-                    <p className="text-xs font-black uppercase">Miami Warehouse</p>
+                    <p className="text-xs font-bold uppercase">Miami Warehouse</p>
                     <p className="text-[10px] text-slate-500 leading-relaxed">7924 NW 66 ST, FLORIDA, 33166</p>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <Phone className="text-orange-500 shrink-0" size={24} />
                   <div className="space-y-1">
-                    <p className="text-xs font-black uppercase">Línea Directa</p>
+                    <p className="text-xs font-bold uppercase">Línea Directa</p>
                     <p className="text-[10px] text-slate-500 leading-relaxed uppercase">+507 6949-1531</p>
                   </div>
                 </li>
               </ul>
             </div>
             <div className="space-y-10">
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-orange-500">Sitemap</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-orange-500">Sitemap</h4>
               <ul className="space-y-4">
                 {['Servicios', 'Pasos', 'Tarifas', 'Calculadora', 'FAQ'].map(link => (
-                  <li key={link}><button onClick={() => navTo(link.toLowerCase())} className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-white transition-colors">{link}</button></li>
+                  <li key={link}><button onClick={() => navTo(link.toLowerCase())} className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors">{link}</button></li>
                 ))}
               </ul>
             </div>
