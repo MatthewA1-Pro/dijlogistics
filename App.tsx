@@ -418,12 +418,13 @@ const App: React.FC = () => {
 
       <main>
         {/* Hero */}
-        <section id="home" className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center bg-slate-900">
           <div className="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-60" alt="Global Logistics" />
             <div className="absolute inset-0 bg-slate-900/60" />
           </div>
-          <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-80 lg:pt-48 pb-20">
+          <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-72 lg:pt-48 pb-20">
+
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl text-left">
               <div className="inline-flex items-center gap-3 bg-white/5 border border-white/20 px-6 py-3 rounded-full mb-12">
 
