@@ -47,9 +47,9 @@ const LogoIcon = ({ size = 40, className = "" }) => (
 const LogoDIJ = ({ inverted = false }) => (
   <div className="flex items-center group cursor-pointer transition-all duration-300">
     <img
-      src={inverted ? "/logo-white.svg" : "/logo-color.svg"}
+      src="/logo-official.svg"
       alt="DIJ LOGISTICS"
-      className="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
+      className="h-12 md:h-16 lg:h-20 w-auto object-contain rounded-lg shadow-lg group-hover:scale-105 transition-transform"
     />
   </div>
 );

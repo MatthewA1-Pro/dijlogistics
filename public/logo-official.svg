@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#EB5E28"/>
+  <circle cx="256" cy="200" r="140" stroke="white" stroke-width="4" opacity="0.3"/>
+  <circle cx="256" cy="200" r="140" fill="white" fill-opacity="0.1"/>
+  <path d="M256 60C280 60 300 120 300 200C300 280 280 340 256 340C232 340 212 280 212 200C212 120 232 60 256 60Z" stroke="white" stroke-width="4" opacity="0.4"/>
+  <ellipse cx="256" cy="200" rx="140" ry="50" stroke="white" stroke-width="4" opacity="0.4"/>
+  <path d="M256 60L256 340" stroke="white" stroke-width="4" opacity="0.4"/>
+  <path d="M116 200L396 200" stroke="white" stroke-width="4" opacity="0.4"/>
+  
+  <path d="M120 320C180 340 280 320 380 220C420 180 440 120 445 100" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
+  
+  <g transform="translate(370, 150) rotate(-22)">
+    <path d="M-60 0L60 25L50 35L-60 20L-90 80L-110 75L-80 20L-150 15L-150 0Z" fill="#3ABEF9" stroke="white" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+  
+  <text x="50%" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="64" fill="white" style="letter-spacing: 2px;">DIJ LOGISTICS</text>
+  <text x="50%" y="470" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="18" fill="white" style="letter-spacing: 6px; opacity: 0.9;">TU CARGA EN TIEMPO RECORD</text>
+</svg>
