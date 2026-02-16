@@ -45,34 +45,35 @@ const LogoIcon = ({ size = 40, className = "" }) => (
 );
 
 const LogoDIJ = ({ inverted = false }) => (
-  <div className="flex items-center gap-3 group cursor-pointer">
-    <div className="w-16 h-16 shrink-0 relative">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-sm">
-        {/* Globe Background */}
-        <circle cx="100" cy="100" r="70" fill={inverted ? "#ffffff20" : "#f8fafc"} />
-        <circle cx="100" cy="100" r="70" stroke="#4A90E2" strokeWidth="2" />
-        <ellipse cx="100" cy="100" rx="30" ry="70" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
-        <ellipse cx="100" cy="100" rx="70" ry="30" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
-        <line x1="30" y1="100" x2="170" y2="100" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
-        <line x1="100" y1="30" x2="100" y2="170" stroke="#4A90E2" strokeWidth="1.5" opacity="0.6" />
+  <div className="flex items-center gap-2 md:gap-3 group cursor-pointer transition-all duration-300">
+    <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 relative">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-sm transition-transform group-hover:scale-105">
+        {/* Globe Background with detailed premium lines */}
+        <circle cx="100" cy="100" r="75" fill={inverted ? "#ffffff15" : "#EBF5FF"} />
+        <circle cx="100" cy="100" r="75" stroke="#4A90E2" strokeWidth="1.5" />
+        <ellipse cx="100" cy="100" rx="30" ry="75" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
+        <ellipse cx="100" cy="100" rx="55" ry="75" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
+        <ellipse cx="100" cy="100" rx="75" ry="30" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
+        <ellipse cx="100" cy="100" rx="75" ry="55" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
+        <line x1="25" y1="100" x2="175" y2="100" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
+        <line x1="100" y1="25" x2="100" y2="175" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
 
-        {/* Plane Trail */}
-        <path d="M20 140C40 145 80 150 130 110C160 85 180 60 185 55" stroke="#EB5E28" strokeWidth="8" strokeLinecap="round" className="opacity-90" />
-        <path d="M20 140C40 145 80 150 130 110C160 85 180 60 185 55" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+        {/* Plane Trail with curve */}
+        <path d="M15 145C35 150 75 145 120 110C155 85 180 50 185 45" stroke="#F97316" strokeWidth="10" strokeLinecap="round" className="opacity-95" />
 
-        {/* Plane */}
-        <g transform="translate(150, 85) rotate(-25)">
-          <path d="M0 0L45 15L35 22L0 15L-20 45L-30 40L-15 15L-45 10L-45 0Z" fill="#EB5E28" stroke="white" strokeWidth="2" strokeLinejoin="round" />
-          <circle cx="20" cy="10" r="1.5" fill="white" opacity="0.8" />
+        {/* Airplane with specific outline */}
+        <g transform="translate(150, 75) rotate(-25)">
+          <path d="M0 0L50 15L40 22L0 15L-20 45L-32 40L-15 15L-50 10L-50 0Z" fill="#F97316" stroke="white" strokeWidth="2.5" strokeLinejoin="round" />
+          <circle cx="25" cy="10" r="2" fill="white" opacity="0.6" />
         </g>
       </svg>
     </div>
-    <div className="flex flex-col -ml-1">
+    <div className="flex flex-col -ml-0.5 md:-ml-1">
       <div className="flex items-baseline leading-none">
-        <span className={`text-2xl font-black tracking-tighter ${inverted ? 'text-white' : 'text-[#1B363F]'}`}>DIJ</span>
-        <span className="text-2xl font-bold tracking-tighter text-[#EB5E28]">LOGISTICS</span>
+        <span className={`text-lg md:text-2xl font-black tracking-tighter ${inverted ? 'text-white' : 'text-[#1B363F]'}`}>DIJ</span>
+        <span className="text-lg md:text-2xl font-bold tracking-tighter text-[#F97316]">LOGISTICS</span>
       </div>
-      <span className={`text-[7px] font-bold uppercase tracking-[0.35em] mt-1.5 ${inverted ? 'text-white/80' : 'text-[#64748B]'}`}>
+      <span className={`text-[6px] md:text-[7px] font-bold uppercase tracking-[0.3em] md:tracking-[0.35em] mt-1 md:mt-1.5 ${inverted ? 'text-white/80' : 'text-[#64748B]'}`}>
         TU CARGA EN TIEMPO RECORD
       </span>
     </div>
@@ -340,9 +341,21 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handle);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [menuOpen]);
+
   const navTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) { el.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false); }
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      setMenuOpen(false);
+    }
   };
 
   return (
@@ -350,36 +363,71 @@ const App: React.FC = () => {
       <LeadAIAssistant />
 
       {/* Dynamic Header */}
-      <header className={`fixed w-full z-[150] transition-all duration-500 ${scrolled ? 'bg-white border-b border-slate-100 py-3 shadow-md' : 'bg-transparent py-6'}`}>
-        <nav className="max-w-[1400px] mx-auto px-8 flex justify-between items-center">
-          <button onClick={() => navTo('home')}>
-            <LogoDIJ inverted={!scrolled} />
+      <header className={`fixed w-full z-[150] transition-all duration-500 ${scrolled ? 'bg-white border-b border-slate-100 py-3 shadow-md' : 'bg-transparent py-5'}`}>
+        <nav className="max-w-[1400px] mx-auto px-6 md:px-8 flex justify-between items-center">
+          <button onClick={() => navTo('home')} className="relative z-[200]">
+            <LogoDIJ inverted={!scrolled && !menuOpen} />
           </button>
 
+          {/* Desktop Nav */}
           <div className="hidden lg:flex gap-10 items-center">
             {['Servicios', 'Pasos', 'Tarifas', 'Calculadora'].map(item => (
-              <button key={item} onClick={() => navTo(item.toLowerCase())} className={`text-[11px] font-bold uppercase tracking-[0.2em] hover:text-[#EB5E28] transition-all ${scrolled ? 'text-slate-600' : 'text-white'}`}>
+              <button key={item} onClick={() => navTo(item.toLowerCase())} className={`text-[11px] font-bold uppercase tracking-[0.2em] hover:text-[#F97316] transition-all ${scrolled ? 'text-slate-600' : 'text-white'}`}>
                 {item}
               </button>
             ))}
-            <a href={WHATSAPP_LINK} target="_blank" className="bg-[#EB5E28] text-white px-8 py-3.5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg hover:bg-orange-600 transition-all">
+            <a href={WHATSAPP_LINK} target="_blank" className="bg-[#F97316] text-white px-8 py-3.5 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg hover:bg-orange-600 transition-all hover:scale-105 active:scale-95 transform">
               WHATSAPP DIRECTO
             </a>
           </div>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className={`lg:hidden p-3 rounded-2xl ${scrolled ? 'text-slate-900' : 'text-white'}`}>
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className={`lg:hidden relative z-[200] p-2 -mr-2 rounded-xl transition-colors ${menuOpen ? 'text-slate-900 bg-slate-100' : (scrolled ? 'text-slate-900' : 'text-white')}`}
+            aria-label="Toggle Menu"
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </nav>
 
+        {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {menuOpen && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="lg:hidden bg-white border-b border-slate-100 overflow-hidden">
-              <div className="flex flex-col p-10 gap-6 text-center">
-                {['Servicios', 'Pasos', 'Tarifas', 'Calculadora'].map(item => (
-                  <button key={item} onClick={() => navTo(item.toLowerCase())} className="text-2xl font-bold text-slate-900 uppercase tracking-tighter">{item}</button>
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="lg:hidden fixed inset-0 z-[190] bg-white flex flex-col pt-32 px-8 overflow-y-auto"
+            >
+              <div className="flex flex-col gap-8 text-left">
+                {['Servicios', 'Pasos', 'Tarifas', 'Calculadora', 'FAQ'].map((item, i) => (
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + (i * 0.05) }}
+                    key={item}
+                    onClick={() => navTo(item.toLowerCase())}
+                    className="text-4xl font-black text-slate-900 uppercase tracking-tighter hover:text-[#F97316] transition-colors flex items-center justify-between group"
+                  >
+                    {item}
+                    <ArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity text-[#F97316]" size={32} />
+                  </motion.button>
                 ))}
-                <a href={WHATSAPP_LINK} className="bg-orange-500 text-white py-6 rounded-3xl font-bold text-xs uppercase tracking-widest mt-4">WhatsApp Directo</a>
+              </div>
+
+              <div className="mt-auto pb-12 space-y-8">
+                <div className="h-px bg-slate-100 w-full" />
+                <div className="flex flex-col gap-4">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Atención Inmediata</p>
+                  <a
+                    href={WHATSAPP_LINK}
+                    className="bg-[#F97316] text-white py-6 rounded-3xl font-black text-xs uppercase tracking-widest text-center shadow-xl shadow-orange-500/20 active:scale-95 transform transition-all"
+                  >
+                    WhatsApp Directo
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
