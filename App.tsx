@@ -45,12 +45,21 @@ const LogoIcon = ({ size = 40, className = "" }) => (
 );
 
 const LogoDIJ = ({ inverted = false }) => (
-  <div className="flex items-center group cursor-pointer transition-all duration-300">
+  <div className="flex items-center gap-3 md:gap-4 group cursor-pointer transition-all duration-300">
     <img
-      src="/logo-official.svg"
-      alt="DIJ LOGISTICS"
-      className="h-12 md:h-16 lg:h-20 w-auto object-contain rounded-lg shadow-lg group-hover:scale-105 transition-transform"
+      src="/logo-icon.svg"
+      alt="DIJ Icon"
+      className="h-10 md:h-12 lg:h-16 w-auto object-contain rounded-xl shadow-lg group-hover:scale-105 transition-transform"
     />
+    <div className="flex flex-col">
+      <div className="flex items-baseline leading-none">
+        <span className={`text-xl md:text-2xl lg:text-3xl font-black tracking-tighter ${inverted ? 'text-white' : 'text-[#1B363F]'}`}>DIJ</span>
+        <span className="text-xl md:text-2xl lg:text-3xl font-black tracking-tighter text-[#F97316]">LOGISTICS</span>
+      </div>
+      <span className={`text-[7px] md:text-[8px] font-bold uppercase tracking-[0.3em] mt-1 ${inverted ? 'text-white/80' : 'text-slate-500'}`}>
+        TU CARGA EN TIEMPO RECORD
+      </span>
+    </div>
   </div>
 );
 
@@ -414,9 +423,10 @@ const App: React.FC = () => {
             <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover opacity-60" alt="Global Logistics" />
             <div className="absolute inset-0 bg-slate-900/60" />
           </div>
-          <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-44 lg:pt-32">
+          <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-60 lg:pt-48 pb-20">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl text-left">
-              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/20 px-6 py-3 rounded-full mb-10">
+              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/20 px-6 py-3 rounded-full mb-12">
+
                 <Package className="text-[#F97316]" size={16} />
                 <span className="text-white text-[11px] font-bold uppercase tracking-[0.2em]">BODEGAS PROPIAS: MIAMI & CHINA</span>
               </div>
