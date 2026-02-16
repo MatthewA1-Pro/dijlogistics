@@ -1,0 +1,16 @@
+/* Base styles */
+:root {
+  --brand-blue: #0f172a;
+  --brand-orange: #f97316;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure framer motion transitions are smooth */
+.header-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

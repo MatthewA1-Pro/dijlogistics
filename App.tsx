@@ -45,38 +45,12 @@ const LogoIcon = ({ size = 40, className = "" }) => (
 );
 
 const LogoDIJ = ({ inverted = false }) => (
-  <div className="flex items-center gap-2 md:gap-3 group cursor-pointer transition-all duration-300">
-    <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 relative">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-sm transition-transform group-hover:scale-105">
-        {/* Globe Background with detailed premium lines */}
-        <circle cx="100" cy="100" r="75" fill={inverted ? "#ffffff15" : "#EBF5FF"} />
-        <circle cx="100" cy="100" r="75" stroke="#4A90E2" strokeWidth="1.5" />
-        <ellipse cx="100" cy="100" rx="30" ry="75" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-        <ellipse cx="100" cy="100" rx="55" ry="75" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-        <ellipse cx="100" cy="100" rx="75" ry="30" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-        <ellipse cx="100" cy="100" rx="75" ry="55" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-        <line x1="25" y1="100" x2="175" y2="100" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-        <line x1="100" y1="25" x2="100" y2="175" stroke="#4A90E2" strokeWidth="1" opacity="0.4" />
-
-        {/* Plane Trail with curve */}
-        <path d="M15 145C35 150 75 145 120 110C155 85 180 50 185 45" stroke="#F97316" strokeWidth="10" strokeLinecap="round" className="opacity-95" />
-
-        {/* Airplane with specific outline */}
-        <g transform="translate(150, 75) rotate(-25)">
-          <path d="M0 0L50 15L40 22L0 15L-20 45L-32 40L-15 15L-50 10L-50 0Z" fill="#F97316" stroke="white" strokeWidth="2.5" strokeLinejoin="round" />
-          <circle cx="25" cy="10" r="2" fill="white" opacity="0.6" />
-        </g>
-      </svg>
-    </div>
-    <div className="flex flex-col -ml-0.5 md:-ml-1">
-      <div className="flex items-baseline leading-none">
-        <span className={`text-lg md:text-2xl font-black tracking-tighter ${inverted ? 'text-white' : 'text-[#1B363F]'}`}>DIJ</span>
-        <span className="text-lg md:text-2xl font-bold tracking-tighter text-[#F97316]">LOGISTICS</span>
-      </div>
-      <span className={`text-[6px] md:text-[7px] font-bold uppercase tracking-[0.3em] md:tracking-[0.35em] mt-1 md:mt-1.5 ${inverted ? 'text-white/80' : 'text-[#64748B]'}`}>
-        TU CARGA EN TIEMPO RECORD
-      </span>
-    </div>
+  <div className="flex items-center group cursor-pointer transition-all duration-300">
+    <img
+      src={inverted ? "/logo-white.svg" : "/logo-color.svg"}
+      alt="DIJ LOGISTICS"
+      className="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
+    />
   </div>
 );
 
@@ -178,11 +152,11 @@ const LeadAIAssistant = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[200]">
+    <div className="fixed bottom-6 right-6 z-[250]">
       <AnimatePresence>
         {isOpen && (
           <motion.div initial={{ opacity: 0, y: 20, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-4 w-[350px] md:w-[420px] h-[600px] bg-white rounded-[2.5rem] shadow-[0_25px_80px_-15px_rgba(0,0,0,0.2)] border border-slate-100 flex flex-col overflow-hidden">
+            className="mb-4 w-[320px] md:w-[420px] h-[500px] md:h-[600px] bg-white rounded-[2.5rem] shadow-[0_25px_80px_-15px_rgba(0,0,0,0.2)] border border-slate-100 flex flex-col overflow-hidden">
             <div className="bg-slate-900 p-6 text-white flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shadow-lg"><Headset size={20} /></div>
@@ -384,55 +358,54 @@ const App: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden relative z-[200] p-2 -mr-2 rounded-xl transition-colors ${menuOpen ? 'text-slate-900 bg-slate-100' : (scrolled ? 'text-slate-900' : 'text-white')}`}
+            className={`lg:hidden relative z-[210] p-4 rounded-xl transition-all ${menuOpen ? 'text-slate-900 bg-slate-50' : (scrolled ? 'text-slate-900 bg-slate-100' : 'text-white bg-white/10')}`}
             aria-label="Toggle Menu"
           >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {menuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </nav>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="lg:hidden fixed inset-0 z-[190] bg-white flex flex-col pt-32 px-8 overflow-y-auto"
-            >
-              <div className="flex flex-col gap-8 text-left">
-                {['Servicios', 'Pasos', 'Tarifas', 'Calculadora', 'FAQ'].map((item, i) => (
-                  <motion.button
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (i * 0.05) }}
-                    key={item}
-                    onClick={() => navTo(item.toLowerCase())}
-                    className="text-4xl font-black text-slate-900 uppercase tracking-tighter hover:text-[#F97316] transition-colors flex items-center justify-between group"
-                  >
-                    {item}
-                    <ArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity text-[#F97316]" size={32} />
-                  </motion.button>
-                ))}
-              </div>
-
-              <div className="mt-auto pb-12 space-y-8">
-                <div className="h-px bg-slate-100 w-full" />
-                <div className="flex flex-col gap-4">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Atención Inmediata</p>
-                  <a
-                    href={WHATSAPP_LINK}
-                    className="bg-[#F97316] text-white py-6 rounded-3xl font-black text-xs uppercase tracking-widest text-center shadow-xl shadow-orange-500/20 active:scale-95 transform transition-all"
-                  >
-                    WhatsApp Directo
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            className="lg:hidden fixed inset-0 z-[200] bg-white flex flex-col pt-32 px-10"
+          >
+            <div className="flex flex-col gap-8 text-left">
+              {['Servicios', 'Pasos', 'Tarifas', 'Calculadora', 'FAQ'].map((item, i) => (
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + (i * 0.05) }}
+                  key={item}
+                  onClick={() => navTo(item.toLowerCase())}
+                  className="text-5xl font-black text-slate-900 uppercase tracking-tighter hover:text-[#F97316] transition-all flex items-center justify-between group"
+                >
+                  {item}
+                  <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-[#F97316]" size={40} />
+                </motion.button>
+              ))}
+            </div>
+
+            <div className="mt-auto pb-16 space-y-10">
+              <div className="h-px bg-slate-100 w-full" />
+              <div className="flex flex-col gap-5">
+                <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center">Atención Personalizada 24/7</p>
+                <a
+                  href={WHATSAPP_LINK}
+                  className="bg-[#F97316] text-white py-8 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] text-center shadow-2xl shadow-orange-500/30 active:scale-95 transform transition-all flex items-center justify-center gap-4"
+                >
+                  <MessageCircle size={24} /> WhatsApp Directo
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main>
         {/* Hero */}
@@ -444,18 +417,18 @@ const App: React.FC = () => {
           <div className="max-w-[1400px] mx-auto px-8 relative z-10 w-full pt-44 lg:pt-32">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl text-left">
               <div className="inline-flex items-center gap-3 bg-white/5 border border-white/20 px-6 py-3 rounded-full mb-10">
-                <Package className="text-[#EB5E28]" size={16} />
+                <Package className="text-[#F97316]" size={16} />
                 <span className="text-white text-[11px] font-bold uppercase tracking-[0.2em]">BODEGAS PROPIAS: MIAMI & CHINA</span>
               </div>
               <h1 className="text-[60px] md:text-[80px] lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-10">
                 Tu Carga Global,<br />
-                <span className="text-[#EB5E28]">Simple & Segura.</span>
+                <span className="text-[#F97316]">Simple & Segura.</span>
               </h1>
               <p className="text-lg lg:text-xl text-white/80 mb-12 max-w-2xl font-medium leading-relaxed">
                 Activa tu casillero corporativo GRATIS hoy. Importamos tecnología, maquinaria y retail a Panamá y Venezuela con tarifas fijas garantizadas.
               </p>
               <div className="flex flex-wrap gap-6">
-                <a href={WHATSAPP_LINK} className="bg-[#EB5E28] text-white px-10 py-5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform active:scale-95">ABRIR CASILLERO GRATIS</a>
+                <a href={WHATSAPP_LINK} className="bg-[#F97316] text-white px-10 py-5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-2xl hover:bg-white hover:text-slate-900 transition-all transform active:scale-95">ABRIR CASILLERO GRATIS</a>
                 <button onClick={() => navTo('tarifas')} className="bg-transparent border border-white/30 text-white px-10 py-5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all">VER TARIFAS Y RUTAS</button>
               </div>
             </motion.div>
@@ -468,7 +441,7 @@ const App: React.FC = () => {
         <section id="pasos" className="py-32 bg-white overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-8">
             <div className="text-center mb-24">
-              <span className="text-[#EB5E28] text-[12px] font-bold uppercase tracking-[0.4em] mb-4 block">Logística Simplificada</span>
+              <span className="text-[#F97316] text-[12px] font-bold uppercase tracking-[0.4em] mb-4 block">Logística Simplificada</span>
               <h2 className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter italic">¿Cómo Funciona?</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-12">
@@ -478,7 +451,7 @@ const App: React.FC = () => {
                 { icon: Package, t: "3. Recibe en Casa", d: "Gestionamos aduanas y transporte internacional hasta tu puerta en Panamá o Venezuela sin complicaciones." }
               ].map((s, i) => (
                 <div key={i} className="group text-center">
-                  <div className="mb-8 w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto text-[#EB5E28] shadow-sm">
+                  <div className="mb-8 w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto text-[#F97316] shadow-sm">
                     <s.icon size={28} />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">{s.t}</h3>
@@ -540,7 +513,7 @@ const App: React.FC = () => {
         <div className="max-w-[1400px] mx-auto px-8">
           <div className="grid lg:grid-cols-4 gap-20 border-b border-white/5 pb-24">
             <div className="lg:col-span-2 space-y-12">
-              <LogoDIJ inverted={false} />
+              <LogoDIJ inverted={true} />
               <p className="text-slate-500 text-xl font-medium max-w-sm leading-relaxed">
                 Revolucionando la logística internacional con centros de operación en Panamá, Miami y China.
               </p>
